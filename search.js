@@ -60,7 +60,7 @@ let movie_name =document.getElementById("movie_name").value;
 
 
     try{
-        let response = await fetch(`http://www.omdbapi.com/?apikey=d7e5e601&s=${movie_name}`);
+        let response = await fetch(`https://www.omdbapi.com/?apikey=d7e5e601&s=${movie_name}`);
         
         let data = await response.json();
         console.log(data);
