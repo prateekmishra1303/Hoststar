@@ -15,6 +15,7 @@ function appendMovies(data){
  
          let name =document.createElement('p');
          name.innerText = el.Title;
+         name.className = "movie_name";
  
          div.append(img, name);
          movies_div.append(div);

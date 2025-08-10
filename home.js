@@ -19,18 +19,57 @@ function carousel(){
 
     let i=1;
 
+    // imgElement.src = images[0];
+
     imgElement.src = images[0];
-    carousel_div.append(imgElement);
+    imgElement.style.position = 'absolute';
+    imgElement.style.top = 0;
+    imgElement.style.left = 0;
+    imgElement.style.width = '100%';
+    imgElement.style.height = '100%';
+    imgElement.style.transition = 'transform 0.5s ease-in-out';
+
+    carousel_div.style.position = 'relative'; // make sure the parent is positioned
+    carousel_div.style.overflow = 'hidden';
+    carousel_div.appendChild(imgElement);
+
+
 
     setInterval( function(){
         
-        if (i=== images.length){
-            i = 0;
-        }
+        // if (i=== images.length){
+        //     i = 0;
+        // }
 
-        imgElement.src = images[i];
-        carousel_div.append(imgElement);
-        i++;
+        // imgElement.src = images[i];
+        // carousel_div.append(imgElement);
+        // i++;
+
+        let img2 = document.createElement('img');
+        img2.src = images[i];
+        img2.style.position = 'absolute';
+        img2.style.top = 0;
+        img2.style.left = 0;
+        img2.style.width = '100%';
+        img2.style.height = '100%';
+        img2.style.transform = 'translateX(100%)';
+        img2.style.transition = 'transform 0.5s ease-in-out';
+
+        carousel_div.appendChild(img2);
+
+        // trigger sliding
+        setTimeout(() => {
+            imgElement.style.transform = 'translateX(-100%)';
+            img2.style.transform = 'translateX(0%)';
+        }, 50)
+
+        // remove old image after animation
+        setTimeout(() => {
+            carousel_div.removeChild(imgElement);
+            imgElement = img2;
+        }, 600);
+
+        i = (i + 1) % images.length;
     }, 3000)
 }
 
